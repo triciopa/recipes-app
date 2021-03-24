@@ -69,7 +69,7 @@ export const SearchBar = (props) => {
   };
 
   const handleInput = (e) => {
-    if (e.target.value < 3 || e.target.value > 27) {
+    if (e.target.value < 3 || e.target.value > 10) {
       setWrongNumber(true);
     } else {
       setWrongNumber(false);
@@ -82,12 +82,9 @@ export const SearchBar = (props) => {
       <h2>Foodie's paradise</h2>
       <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
         <div>
-          <label className="label" htmlFor="title">
-            Recipes:{' '}
-          </label>
           <input
             type="text"
-            id="title"
+            id="recipeTitle"
             autoComplete="off"
             value={title}
             placeholder="Find your recipes..."
@@ -95,85 +92,91 @@ export const SearchBar = (props) => {
           />
         </div>
         <button type="submit">🔍</button>
+        <button>
+          <Link to="/create">➕</Link>
+        </button>
       </form>
-      <span>
-        <Link to="/create">Create recipe</Link>
-      </span>
-      <hr />
-      <div id="dietTypes">
-        {props.recipes.length ? <label>Diet types: </label> : null}
-        {props.recipes.length
-          ? props.diets.map((diet, i) => (
-              <button
-                className="dietBtn"
-                key={`${diet}${i}`}
-                onClick={() => handleClick(diet)}
-              >
-                {diet.toUpperCase()}
-              </button>
+      <div id="controls">
+        <div id="dietTypes">
+          {props.recipes.length ? <label>Diet types: </label> : null}
+          {props.recipes.length
+            ? props.diets.map((diet, i) => (
+                <button
+                  className="dietBtn"
+                  key={`${diet}${i}`}
+                  onClick={() => handleClick(diet)}
+                >
+                  {diet.toUpperCase()}
+                </button>
+              ))
+            : null}
+        </div>
+        <div id="elementsPerPage">
+          {props.recipes.length ? <label>Elements per Page: </label> : null}
+          {props.recipes.length ? (
+            <input
+              type="number"
+              placeholder={elemsPerPage}
+              min="3"
+              max="10"
+              onChange={(e) => handleInput(e)}
+            ></input>
+          ) : null}
+          {wrongNumber && <p>Choose between 3 and 10</p>}
+          <span>
+            {props.recipes.length
+              ? props.recipes.length + ' results'
+              : '0 results'}
+          </span>
+        </div>
+
+        <div id="resultOrder">
+          {props.recipes.length ? <label>Result order: </label> : null}
+          {props.recipes.length ? (
+            <select name="select" onChange={(e) => handleSelect(e)}>
+              <option value="order">CHANGE ORDER</option>
+              <option value="asc">Ascending(A-z)</option>
+              <option value="desc">Descending(z-A)</option>
+              <option value="max">Higher scores</option>
+              <option value="min">Lower scores</option>
+            </select>
+          ) : null}
+        </div>
+      </div>
+      <div id="resultsBoard">
+        <ul>
+          {props.recipes.error ? (
+            <h4>{props.recipes.error}</h4>
+          ) : (
+            display &&
+            display.map((recipe) => (
+              <li key={recipe.title} id={`recipe${recipe.id}`}>
+                {recipe.id && (
+                  <div>
+                    <h4>
+                      <Link
+                        to={`/recipe/${Math.abs(recipe.id)}`}
+                        onClick={() => props.getSinglePage(recipe.id)}
+                      >
+                        {recipe.title}
+                      </Link>
+                    </h4>
+                    <img src={recipe.image} alt="Imagen sin cargar..." />
+                    <div className="dietsList">
+                      {recipe.diets.map((diet, i) => {
+                        return (
+                          <p key={`${recipe.id}-${diet.name}`}>{diet.name}</p>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
+              </li>
             ))
-          : null}
+          )}
+        </ul>
       </div>
-      <div id="elementsPerPage">
-        {props.recipes.length ? <label>Elements per Page: </label> : null}
-        {props.recipes.length ? (
-          <input
-            type="number"
-            placeholder={elemsPerPage}
-            min="3"
-            max="27"
-            onChange={(e) => handleInput(e)}
-          ></input>
-        ) : null}
-        {props.recipes.length ? (
-          <span>{props.recipes.length} results</span>
-        ) : null}
-        {wrongNumber && <span>Choose between 3 and 27</span>}
-      </div>
-      <div id="resultOrder">
-        {props.recipes.length ? <label>Result order: </label> : null}
-        {props.recipes.length ? (
-          <select name="select" onChange={(e) => handleSelect(e)}>
-            <option value="order">CHANGE ORDER</option>
-            <option value="asc">Ascending(A-z)</option>
-            <option value="desc">Descending(z-A)</option>
-            <option value="max">Higher scores</option>
-            <option value="min">Lower scores</option>
-          </select>
-        ) : null}
-      </div>
-      <ul>
-        {props.recipes.error ? (
-          <h4>{props.recipes.error}</h4>
-        ) : (
-          display &&
-          display.map((recipe) => (
-            <li key={recipe.title} id={`recipe${recipe.id}`}>
-              {recipe.id && (
-                <div>
-                  <h4>
-                    <Link
-                      to={`/recipe/${Math.abs(recipe.id)}`}
-                      onClick={() => props.getSinglePage(recipe.id)}
-                    >
-                      {recipe.title}
-                    </Link>
-                  </h4>
-                  <img src={recipe.image} alt="Imagen sin cargar..." />
-                  <ul className="dietsList">
-                    {recipe.diets.map((diet, i) => {
-                      return (
-                        <p key={`${recipe.id}-${diet.name}`}>{diet.name}</p>
-                      );
-                    })}
-                  </ul>
-                </div>
-              )}
-            </li>
-          ))
-        )}
-      </ul>
-      <div>
+      <div id="pageButtons">
         {props.recipes && props.recipes.length ? (
           <button
             name="PREV"
@@ -192,7 +195,7 @@ export const SearchBar = (props) => {
               key={`pageButton${i}`}
               onClick={() => setPage(i + 1)}
             >
-              Página{i + 1}
+              Página {i + 1}
             </button>
           ))}
         {props.recipes && props.recipes.length ? (
