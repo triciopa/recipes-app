@@ -1,0 +1,145 @@
+.content {
+  margin-right: 0px;
+}
+.form-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container button {
+  font-family: Roboto;
+  margin: 20px 20px 10px 20px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  background-color: transparent;
+  border: 4px solid #2e4053;
+  color: #2e4053;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.form-container button:hover {
+  background-color: #85c1e9;
+  border: 4px solid #2e4053;
+  color: whitesmoke;
+}
+
+.form-container button:active {
+  padding: 9px 20px;
+  background-color: #85c1e9;
+  border: 6px solid #2e4053;
+  color: whitesmoke;
+  font-size: 16px;
+  font-weight: 900;
+  margin: 20px 20px 11px 20px;
+}
+
+/* input movie search */
+#title {
+  padding: 17px 20px 17px 20px;
+  width: 320px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-family: Montserrat;
+  text-align: center;
+}
+
+#title:focus {
+  background-color: #f8c47144;
+  border: 2px solid sandybrown;
+  outline: none;
+}
+
+h2 {
+  background: radial-gradient(ellipse, #85c1e9, #2e4053);
+  border: 7px dotted white;
+  border-left: none;
+  border-right: none;
+  margin: 60px 25% 40px 25%;
+  outline: 3px solid #2e4053;
+  text-align: center;
+  padding: 9px 0;
+  font-family: Roboto;
+  font-variant: small-caps;
+  color: whitesmoke;
+  text-shadow: 2px 2px 3px black;
+}
+
+.label {
+  margin: 0 25px 0 50px;
+  display: none;
+}
+
+.content ul {
+  list-style-type: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.content li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  margin: 0px 10px 10px 10px;
+  border: 4px solid #273746;
+  background-color: #85c1e9aa;
+  width: 36vh;
+  height: 300px;
+  border-radius: 8px;
+  animation: stopfloating 2s infinite linear;
+}
+
+.content a {
+  text-decoration: none;
+  font-weight: bolder;
+  color: #2e4053;
+  margin: 0 10px;
+}
+
+.content a:visited {
+  color: #273746;
+}
+
+.content a:active {
+  color: #85c1e9;
+}
+
+.content a:hover {
+  color: #85c1e9;
+}
+
+.content li button {
+  padding: 10px;
+  margin: 15px 15% 0 15%;
+  font-family: monospace;
+  border-radius: 20px;
+  background-color: transparent;
+}
+
+hr {
+  width: 60%;
+  height: 6px;
+  margin: 30px auto;
+  background-image: linear-gradient(
+    90deg,
+    white,
+    #5d6d7e,
+    #5d6d7e,
+    #17202a,
+    #17202a,
+    #273746,
+    #273746,
+    #273746,
+    #273746,
+    #5d6d7e,
+    white
+  );
+  border: none;
+}
