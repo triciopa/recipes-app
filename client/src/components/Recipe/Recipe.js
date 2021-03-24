@@ -18,12 +18,15 @@ export const Recipe = (props) => {
   }, [props.recipe]);
 
   return (
-    <div>
+    <div id="recipeComponent">
       <div className="container">
         <h1 className="title">{props.recipe.title || 'Title'}</h1>
-        <span>
+        <span className="scores">
+          <strong>Overall: </strong>
           {props.recipe.spoonacularScore || 'Score'}
-          <br />
+        </span>
+        <span className="scores">
+          <strong>Health: </strong>
           {props.recipe.healthScore || 'Health score'}
         </span>
         <img
@@ -32,37 +35,31 @@ export const Recipe = (props) => {
             'https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg'
           }
           alt="imagen sin cargar"
-          width="200"
-          height="200"
         ></img>
-        <p id="director">
-          <strong>Director:</strong> {'Director'}
-        </p>
-        <p id="year">Año</p>
-        <p id="rating">
-          Rating de salud:
-          <br />
-          {props.recipe.healthScore || '50'}
-        </p>
-        <p id="runtime">
-          Duration:
-          <br />
-          {'100 min'}
-        </p>
-        <p className="summary" id="summary">
-          Summary text.
-        </p>
-        <p className="description" id="description">
-          Elit in eu culpa ex qui enim consectetur incididunt ex adipisicing
-          proident sit eiusmod consectetur. Nostrud qui fugiat minim aliquip
-          amet culpa ea deserunt reprehenderit nulla officia anim. Dolor qui
-          quis elit cupidatat consequat sunt cupidatat non voluptate. Laboris
-          adipisicing voluptate nostrud nisi culpa consectetur. Eu non duis
-          labore dolor veniam quis sint.
-        </p>
-        <p id="production">{'Production details'}</p>
+        <div className="summary">
+          <h3>Summary</h3>
+          <p id="summary">
+            Elit in eu culpa ex qui enim consectetur incididunt ex adipisicing
+            proident sit eiusmod consectetur. Nostrud qui fugiat minim aliquip
+            amet culpa ea deserunt reprehenderit nulla officia anim. Dolor qui
+            quis elit cupidatat consequat sunt cupidatat non voluptate. Laboris
+            adipisicing voluptate nostrud nisi culpa consectetur. Eu non duis
+            labore dolor veniam quis sint.
+          </p>
+        </div>
+        <div className="description">
+          <h3>Instructions step-by-step</h3>
+          <p id="description">
+            Elit in eu culpa ex qui enim consectetur incididunt ex adipisicing
+            proident sit eiusmod consectetur. Nostrud qui fugiat minim aliquip
+            amet culpa ea deserunt reprehenderit nulla officia anim. Dolor qui
+            quis elit cupidatat consequat sunt cupidatat non voluptate. Laboris
+            adipisicing voluptate nostrud nisi culpa consectetur. Eu non duis
+            labore dolor veniam quis sint.
+          </p>
+        </div>
       </div>
-      <div id="back">
+      <div id="buttons">
         <Link to="/main">
           <button>Go back</button>
         </Link>

@@ -85,10 +85,11 @@ export const Form = (props) => {
   };
 
   return (
-    <div>
+    <div id="formComponent">
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div>
+        <div id="labels">
           <label>Title:</label>
+          {errors.title && <p className="danger">{errors.title}</p>}
           <input
             className={`${errors.title && 'danger'}`}
             type="text"
@@ -96,10 +97,8 @@ export const Form = (props) => {
             value={input.title}
             onChange={handleInputChange}
           />
-          {errors.title && <p className="danger">{errors.title}</p>}
-        </div>
-        <div>
           <label>Summary:</label>
+          {errors.summary && <p className="danger">{errors.summary}</p>}
           <textarea
             className={`${errors.summary && 'danger'}`}
             type="text"
@@ -107,35 +106,30 @@ export const Form = (props) => {
             value={input.summary}
             onChange={handleInputChange}
           />
-          {errors.summary && <p className="danger">{errors.summary}</p>}
-        </div>
-        <div>
-          <label>Score:</label>
-          <input
-            className={`${errors.score && 'danger'}`}
-            type="number"
-            min="1"
-            max="99"
-            name="score"
-            value={input.score}
-            onChange={handleInputChange}
-          />
-          {errors.score && <p className="danger">{errors.score}</p>}
-        </div>
-        <div>
-          <label>Health:</label>
-          <input
-            className={`${errors.health && 'danger'}`}
-            type="number"
-            min="1"
-            max="99"
-            name="health"
-            value={input.health}
-            onChange={handleInputChange}
-          />
-          {errors.health && <p className="danger">{errors.health}</p>}
-        </div>
-        <div>
+          <div id="scores">
+            <label>Score:</label>
+            <input
+              className={`${errors.score && 'danger'}`}
+              type="number"
+              min="1"
+              max="99"
+              name="score"
+              value={input.score}
+              onChange={handleInputChange}
+            />
+            {errors.score && <p className="danger">{errors.score}</p>}
+            <label>Health:</label>
+            <input
+              className={`${errors.health && 'danger'}`}
+              type="number"
+              min="1"
+              max="99"
+              name="health"
+              value={input.health}
+              onChange={handleInputChange}
+            />
+            {errors.health && <p className="danger">{errors.health}</p>}
+          </div>
           <label>Instructions:</label>
           <textarea
             className={`${errors.instructions && 'danger'}`}
@@ -148,25 +142,33 @@ export const Form = (props) => {
             <p className="danger">{errors.instructions}</p>
           )}
         </div>
-        {props.diets.map((diet) => (
-          <div>
-            <label>{diet}</label>
-            <input
-              key={diet}
-              type="checkbox"
-              value={diet}
-              onChange={handleCheckbox}
-            />
+        <div id="dietBox">
+          <ul>
+            {props.diets.map((diet) => (
+              <li>
+                {diet}
+                <input
+                  key={diet}
+                  type="checkbox"
+                  value={diet}
+                  onChange={handleCheckbox}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div id="buttons">
+          <div id="submit">
+            <button type="submit">Submit recipe</button>
           </div>
-        ))}
-        <button type="submit">Submit</button>
+          <div id="back">
+            <Link to="/main">
+              <button>Go back</button>
+            </Link>
+          </div>
+        </div>
       </form>
       {response && <p id="response">{response}</p>}
-      <div id="back">
-        <Link to="/main">
-          <button>Go back</button>
-        </Link>
-      </div>
     </div>
   );
 };

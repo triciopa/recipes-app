@@ -80,37 +80,7 @@ export const SearchBar = (props) => {
   return (
     <div className="content">
       <h2>Foodie's paradise</h2>
-      <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
-        <div>
-          <input
-            type="text"
-            id="recipeTitle"
-            autoComplete="off"
-            value={title}
-            placeholder="Find your recipes..."
-            onChange={(e) => handleChange(e)}
-          />
-        </div>
-        <button type="submit">🔍</button>
-        <button>
-          <Link to="/create">➕</Link>
-        </button>
-      </form>
       <div id="controls">
-        <div id="dietTypes">
-          {props.recipes.length ? <label>Diet types: </label> : null}
-          {props.recipes.length
-            ? props.diets.map((diet, i) => (
-                <button
-                  className="dietBtn"
-                  key={`${diet}${i}`}
-                  onClick={() => handleClick(diet)}
-                >
-                  {diet.toUpperCase()}
-                </button>
-              ))
-            : null}
-        </div>
         <div id="elementsPerPage">
           {props.recipes.length ? <label>Elements per Page: </label> : null}
           {props.recipes.length ? (
@@ -129,7 +99,22 @@ export const SearchBar = (props) => {
               : '0 results'}
           </span>
         </div>
-
+        <form className="form-container" onSubmit={(e) => handleSubmit(e)}>
+          <div>
+            <input
+              type="text"
+              id="recipeTitle"
+              autoComplete="off"
+              value={title}
+              placeholder="Find your recipes..."
+              onChange={(e) => handleChange(e)}
+            />
+          </div>
+          <button type="submit">🔍</button>
+          <button>
+            <Link to="/create">➕</Link>
+          </button>
+        </form>
         <div id="resultOrder">
           {props.recipes.length ? <label>Result order: </label> : null}
           {props.recipes.length ? (
@@ -143,6 +128,21 @@ export const SearchBar = (props) => {
           ) : null}
         </div>
       </div>
+      <div id="dietTypes">
+        {props.recipes.length ? <label>Diet types: </label> : null}
+        {props.recipes.length
+          ? props.diets.map((diet, i) => (
+              <button
+                className="dietBtn"
+                key={`${diet}${i}`}
+                onClick={() => handleClick(diet)}
+              >
+                {diet.toUpperCase()}
+              </button>
+            ))
+          : null}
+      </div>
+
       <div id="resultsBoard">
         <ul>
           {props.recipes.error ? (
