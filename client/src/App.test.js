@@ -146,9 +146,9 @@ describe('Client', () => {
         </Provider>
       );
     });
-    it('has six <label> elements', () => {
+    it('has five <label> elements', () => {
       // eslint-disable-next-line jest/valid-expect
-      expect(wrapper.find('label')).to.have.lengthOf(6);
+      expect(wrapper.find('label')).to.have.lengthOf(5);
       // eslint-disable-next-line jest/valid-expect
     });
 
