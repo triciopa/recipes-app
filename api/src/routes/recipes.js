@@ -68,7 +68,7 @@ router.get('/', async (req, res) => {
           });
     } // ----------------- IF END
   } catch (err) {
-    // console.log(err);
+    console.log(err);
     res.status(500).json({
       results: {
         error: 'Error de servidor, probablemente hayas consumido tus créditos',

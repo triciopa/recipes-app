@@ -50,6 +50,7 @@ describe('Recipe routes', () => {
   beforeEach(() =>
     Recipe.sync({ force: true }).then(() => {
       Recipe.create(recipe);
+      setRelations();
     })
   );
   describe('GET /recipes', () => {
@@ -61,7 +62,8 @@ describe('Recipe routes', () => {
     it('should get 200', () => agent.get('/diets').expect(200));
   });
   describe('GET /recipes/:id', () => {
-    it('should get 200', () => agent.get('/recipes/1').expect(200));
+    it('should get 200', () => agent.get('/recipes/1').expect(200)); // Database
+    it('should get 200', () => agent.get('/recipes/-1').expect(200)); // API
     it('should get 500 if ID is 0', () => agent.get('/recipes/0').expect(500));
     it('should get 500 if ID is not a number', () =>
       agent.get('/recipes/ladsjf').expect(500));
