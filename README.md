@@ -1,7 +1,7 @@
 # Individual Project - Food recipes browser
 
-<p align="right">
-  <img height="200" src="./cooking.png" />  
+<p align="center">
+  <img height="200" src="https://spoonacular.com/application/frontend/images/food-api/dough.jpg" />  
 </p>
 
 >**Video URL:** https://www.youtube.com/watch?v=zNpAxib4T9Y
