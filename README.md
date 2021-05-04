@@ -1,8 +1,10 @@
 # Individual Project - Food recipes browser
 
 <p align="right">
-  <img height="200" src="./cooking.png" />
+  <img height="200" src="./cooking.png" />  
 </p>
+
+>**Video URL:** https://www.youtube.com/watch?v=zNpAxib4T9Y
 
 ## Main features
 
