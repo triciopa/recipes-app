@@ -15,6 +15,10 @@ const dietRouter = require('./diets');
 router.use('/recipes', recipeRouter);
 router.use('/diets', dietRouter);
 
+// server.get('/*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client/build/index.html'));
+// });
+
 router.get('/', async (req, res) => {
   res.send('Server OK');
 });
