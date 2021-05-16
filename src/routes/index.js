@@ -16,53 +16,7 @@ router.use('/recipes', recipeRouter);
 router.use('/diets', dietRouter);
 
 router.get('/', async (req, res) => {
-  // const getData = async () => {
-  //   const request = await axios.get(
-  //     `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=100`
-  //   );
-  //   return request.data.results;
-  // };
-
-  // let data = await getData();
-
-  // for (let i = 0; i < data.length; i++) {
-  //   const element = data[i];
-  //   let instructions = '';
-  //   if (element.analyzedInstructions[0]) {
-  //     let steps = element.analyzedInstructions[0].steps;
-  //     for (let i = 0; i < steps.length; i++) {
-  //       const string = steps[i].step;
-  //       instructions = instructions + string;
-  //     }
-  //   } else {
-  //     instructions = null;
-  //   }
-  //   const newRecipe = await Recipe.findOrCreate({
-  //     where: {
-  //       title: element.title,
-  //     },
-  //     defaults: {
-  //       summary: element.summary,
-  //       score: element.spoonacularScore,
-  //       health: element.healthScore,
-  //       instructions: instructions,
-  //       spoonId: element.id,
-  //       image: element.image,
-  //     },
-  //   });
-
-  //   const diestDB = await Diet.findAll({
-  //     where: {
-  //       name: {
-  //         [Sequelize.Op.in]: element.diets,
-  //       },
-  //     },
-  //   });
-  //   await newRecipe[0].setDiets(dietsDB);
-  // } // ----- FOR END
-
-  console.log('Base de datos cargada');
-  res.send('OK');
+  res.send('Server OK');
 });
 
 router.post('/recipe', async (req, res) => {
