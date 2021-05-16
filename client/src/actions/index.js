@@ -4,9 +4,11 @@ export const GET_DIETS = 'GET_DIETS';
 export const FILTER_BY_DIET = 'FILTER_BY_DIET';
 export const CHANGE_ORDER = 'CHANGE_ORDER';
 
+//http://localhost:3001
+
 export function getRecipes(name) {
   return function (dispatch) {
-    return fetch('http://localhost:3001/recipes?name=' + name)
+    return fetch('/recipes?name=' + name)
       .then((response) => response.json())
       .then((json) => {
         console.log(json);
@@ -17,7 +19,7 @@ export function getRecipes(name) {
 
 export function getSinglePage(id) {
   return function (dispatch) {
-    return fetch('http://localhost:3001/recipes/' + id)
+    return fetch('/recipes/' + id)
       .then((response) => response.json())
       .then((json) => {
         dispatch({ type: SINGLE_PAGE, payload: json });
@@ -41,7 +43,7 @@ export function changeOrder(ascOrDesc) {
 
 export function getDiets() {
   return function (dispatch) {
-    return fetch('http://localhost:3001/diets')
+    return fetch('/diets')
       .then((response) => response.json())
       .then((json) => {
         dispatch({ type: GET_DIETS, payload: json });
