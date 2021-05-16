@@ -16,7 +16,7 @@ server.use('/', express.static('./client/build'));
 if (process.env.NODE_ENV === 'production') {
   //server static content
   //npm run build
-  server.use(express.static(path.join(__dirname, 'client/build')));
+  // server.use(express.static(path.join(__dirname, 'client/build')));
 }
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' })); // removed "bodyparser"
