@@ -3,7 +3,6 @@ const cookieParser = require('cookie-parser');
 // const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
-const { Server } = require('http');
 
 require('./db.js');
 
@@ -13,11 +12,11 @@ server.name = 'API';
 
 // server.use('/', express.static('./client/build'));
 
-if (process.env.NODE_ENV === 'production') {
-  //server static content
-  //npm run build
-  server.use(express.static(path.join(__dirname, 'client/build')));
-}
+// if (process.env.NODE_ENV === 'production') {
+//   //server static content
+//   //npm run build
+//   server.use(express.static(path.join(__dirname, 'client/build')));
+// }
 
 server.use(express.urlencoded({ extended: true, limit: '50mb' })); // removed "bodyparser"
 server.use(express.json({ limit: '50mb' })); // removed "bodyparser"
