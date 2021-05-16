@@ -13,10 +13,10 @@ const connectionString =
 console.log(connectionString);
 
 const sequelize = new Sequelize(`${connectionString}`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  // logging: false, // set to console.log to see the raw SQL queries
+  // native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   dialect: 'postgres',
-  // native: false,
+  native: true,
   ssl: true,
   dialectOptions: {
     ssl: true,
