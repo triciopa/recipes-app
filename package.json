@@ -1,0 +1,20 @@
+{
+  "name": "recipes-app",
+  "version": "1.0.0",
+  "description": "<p align=\"center\">\r   <img height=\"200\" src=\"https://spoonacular.com/application/frontend/images/food-api/dough.jpg\" />  \r </p>",
+  "main": "api/index.js",
+  "scripts": {
+    "start": "node api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/triciopa/recipes-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/triciopa/recipes-app/issues"
+  },
+  "homepage": "https://github.com/triciopa/recipes-app#readme"
+}
