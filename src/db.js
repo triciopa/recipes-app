@@ -5,14 +5,14 @@ const path = require('path');
 
 const { PG_USER, PG_PASSWORD, PG_HOST, PG_PORT, PG_DATABASE } = process.env;
 const devConfig = `postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}:${PG_PORT}/${PG_DATABASE}`;
-const proConfig = process.env.DATABASE_URL; //heroku addons
+const proConfig = `${process.env.DATABASE_URL}`; //heroku addons
 
 const connectionString =
   process.env.NODE_ENV === 'production' ? proConfig : devConfig;
 
 console.log(connectionString);
 
-const sequelize = new Sequelize(`${connectionString}`, {
+const sequelize = new Sequelize(connectionString, {
   // logging: false, // set to console.log to see the raw SQL queries
   // native: false, // lets Sequelize know we can use pg-native for ~30% more speed
   dialect: 'postgres',
