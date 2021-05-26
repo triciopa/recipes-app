@@ -2,38 +2,15 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
-const pg = require('pg');
+const { DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME } = process.env;
 
-const { PG_USER, PG_PASSWORD, PG_HOST, PG_PORT, PG_DATABASE } = process.env;
-const devConfig = `postgres://${PG_USER}:${PG_PASSWORD}@${PG_HOST}:${PG_PORT}/${PG_DATABASE}`;
-const proConfig = `${process.env.DATABASE_URL}`; //heroku addons
-
-var client = new pg.Client({
-  user: 'rnplgavhrsunam',
-  password: '5cecd943b01a86f10badb26a0cfec9ddb8d2b6ce53f9d671a6c6b813da95398a',
-  database: 'd4mpihprq8keg5',
-  port: 5432,
-  host: 'ec2-34-230-115-172.compute-1.amazonaws.com',
-  ssl: true,
-});
-client.connect();
-
-const connectionString =
-  process.env.NODE_ENV === 'production' ? proConfig : devConfig;
-
-console.log(connectionString);
-
-const sequelize = new Sequelize(connectionString, {
-  logging: false, // set to console.log to see the raw SQL queries
-  // native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  dialect: 'postgres',
-  native: true,
-  ssl: true,
-  dialectOptions: {
-    ssl: true,
-  },
-});
-
+const sequelize = new Sequelize(
+  `postgres://${DB_USER}:${DB_PASS}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
+  {
+    logging: false, // set to console.log to see the raw SQL queries
+    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  }
+);
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
