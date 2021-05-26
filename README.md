@@ -1,10 +1,9 @@
 # Individual Project - Food recipes browser
 
-<p align="center">
-  <img height="200" src="https://spoonacular.com/application/frontend/images/food-api/dough.jpg" />  
-</p>
+<img height="200" src="https://spoonacular.com/application/frontend/images/food-api/dough.jpg" align="right"/>  
 
 <p>You can see a tour inside this app, following the next video:</p>
+
 >**Video URL:** https://www.youtube.com/watch?v=zNpAxib4T9Y
 
 ## How to use
@@ -26,8 +25,6 @@ API_KEY = [spoonacular_api_key];
 5. Start both with "npm start"
 
 <i>Extra: Also you can test both /api and /client with "npm test"</i>
-
-<br />
 
 ## Main features
 
