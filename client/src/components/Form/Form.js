@@ -66,7 +66,7 @@ export const Form = (props) => {
     } else if (!input.title) {
       alert('The recipe needs a title');
     } else {
-      axios.post('http://localhost:3001/recipe', input).then((json) => {
+      axios.post('/recipe', input).then((json) => {
         setResponse(`${json.data.title} has been created`);
         setInput({
           title: '',
