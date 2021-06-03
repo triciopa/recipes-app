@@ -2,7 +2,9 @@
 
 <img height="200" src="https://spoonacular.com/application/frontend/images/food-api/dough.jpg" align="right"/>  
 
-<p>You can see a tour inside this app, following the next video:</p>
+<p> *** This project is deployed <a href="https://foodapp-client.vercel.app">HERE</a> ***</p>
+
+<p>Also can see a tour inside this app, following the next video:</p>
 
 >**Video URL:** https://www.youtube.com/watch?v=zNpAxib4T9Y
 
